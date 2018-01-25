@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《30天带你学30种新技术》第二天：maven安装 | SMStudio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="maven 包管理器[TOC] maven Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。说的通俗一点，你可以利用maven写几行命令就能创建出一个基于maven的java项目，你也可以利用maven来管理JAR包。  如何使用： 刚走向工作岗位的你，应该对这些企业级的技术了解的不是很透彻。所以，才会有这一系列文章  正文： 小菜在经过一天">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《30天带你学30种新技术》第二天：MAVEN安装">
+<meta property="og:url" content="https://xiaomochen520.github.io/smstudio.github.io/2018/01/03/《30天带你学30种新技术》第二天：MAVEN安装/index.html">
+<meta property="og:site_name" content="SMStudio">
+<meta property="og:description" content="maven 包管理器[TOC] maven Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。说的通俗一点，你可以利用maven写几行命令就能创建出一个基于maven的java项目，你也可以利用maven来管理JAR包。  如何使用： 刚走向工作岗位的你，应该对这些企业级的技术了解的不是很透彻。所以，才会有这一系列文章  正文： 小菜在经过一天">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/001.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/002.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/003.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/004.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/005.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/006.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/007.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/008.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/009.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/010.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/011.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/012.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/013.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/014.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/015.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/016.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/017.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/018.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/02/019.png">
+<meta property="og:updated_time" content="2018-01-25T07:59:23.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《30天带你学30种新技术》第二天：MAVEN安装">
+<meta name="twitter:description" content="maven 包管理器[TOC] maven Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。说的通俗一点，你可以利用maven写几行命令就能创建出一个基于maven的java项目，你也可以利用maven来管理JAR包。  如何使用： 刚走向工作岗位的你，应该对这些企业级的技术了解的不是很透彻。所以，才会有这一系列文章  正文： 小菜在经过一天">
+<meta name="twitter:image" content="http://php.smstudio.cc/images/30days/02/001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="SMStudio" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/smstudio.github.io/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/smstudio.github.io/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/smstudio.github.io/css/style.css">
+
+  <script src="/smstudio.github.io/js/jquery-3.1.1.min.js"></script>
+  <script src="/smstudio.github.io/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/smstudio.github.io/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/smstudio.github.io/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/smstudio.github.io/',
+        CONTENT_URL: '/smstudio.github.io/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/smstudio.github.io/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-《30天带你学30种新技术》第二天：MAVEN安装" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      《30天带你学30种新技术》第二天：MAVEN安装
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/smstudio.github.io/2018/01/03/《30天带你学30种新技术》第二天：MAVEN安装/" class="article-date">
+	  <time datetime="2018-01-02T16:00:00.000Z" itemprop="datePublished">2018-01-03</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="maven-包管理器"><a href="#maven-包管理器" class="headerlink" title="maven 包管理器"></a>maven 包管理器</h1><p>[TOC]</p>
+<h3 id="maven"><a href="#maven" class="headerlink" title="maven"></a>maven</h3><blockquote>
+<p>Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。说的通俗一点，你可以利用maven写几行命令就能创建出一个基于maven的java项目，你也可以利用maven来管理JAR包。</p>
+</blockquote>
+<h3 id="如何使用："><a href="#如何使用：" class="headerlink" title="如何使用："></a>如何使用：</h3><blockquote>
+<p>刚走向工作岗位的你，应该对这些企业级的技术了解的不是很透彻。所以，才会有这一系列文章</p>
+</blockquote>
+<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><blockquote>
+<p>小菜在经过一天的上班磨练之后，终于从SVN上下载了领导给他项目(任务)。</p>
+<p>但是小菜一脸懵，发现项目报了好多错，一问才知道，原来是他没有装maven。</p>
+<p>那今天，我们就一起来学习如何安装maven，如何给Eclipse配置maven？</p>
+</blockquote>
+<p>当你在公司里，把SVN项目迁出的时候，如果项目出错，千万别慌，错了就行，就怕他不错。我们现在来解决这个问题。</p>
+<h3 id="什么是maven？"><a href="#什么是maven？" class="headerlink" title="什么是maven？"></a>什么是maven？</h3><blockquote>
+<p>Maven项目对象模型(POM)，可以通过一小段描述信息来管理项目的构建，报告和文档的软件项目管理工具。<br>Maven 除了以程序构建能力为特色之外，还提供高级项目管理工具。由于 Maven 的缺省构建规则有较高的可重用性，所以常常用两三行 Maven 构建脚本就可以构建简单的项目。由于 Maven 的面向项目的方法，许多 Apache Jakarta 项目发文时使用 Maven，而且公司项目采用 Maven 的比例在持续增长。<br>Maven这个单词来自于意第绪语（犹太语），意为知识的积累，最初在Jakata Turbine项目中用来简化构建过程。当时有一些项目（有各自Ant build文件），仅有细微的差别，而JAR文件都由CVS来维护。于是希望有一种标准化的方式构建项目，一个清晰的方式定义项目的组成，一个容易的方式发布项目的信息，以及一种简单的方式在多个项目中共享JARs。</p>
+</blockquote>
+<h3 id="如何使用？"><a href="#如何使用？" class="headerlink" title="如何使用？"></a>如何使用？</h3><ol>
+<li><h4 id="首先去官网下载页下载最新的Maven"><a href="#首先去官网下载页下载最新的Maven" class="headerlink" title="首先去官网下载页下载最新的Maven"></a>首先去<a href="http://maven.apache.org/download.cgi?Preferred=http%3A%2F%2Fmirrors.tuna.tsinghua.edu.cn%2Fapache%2F" target="_blank" rel="noopener">官网下载页</a>下载最新的Maven</h4><p><img src="http://php.smstudio.cc/images/30days/02/001.png" alt=""></p>
+<ol>
+<li><h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><h6 id="首先将下载的压缩包解压到制定的地方，如我解压在D盘30days文件夹下面"><a href="#首先将下载的压缩包解压到制定的地方，如我解压在D盘30days文件夹下面" class="headerlink" title="首先将下载的压缩包解压到制定的地方，如我解压在D盘30days文件夹下面"></a>首先将下载的压缩包解压到制定的地方，如我解压在D盘30days文件夹下面</h6><p><img src="http://php.smstudio.cc/images/30days/02/002.png" alt=""></p>
+<pre><code>###### 去修改里面的配置文件，在`conf`文件夹下面有一个`settings.xml`的文件，右键`打开方式`-&gt;`写字板`
+</code></pre></li>
+</ol>
+<p><img src="http://php.smstudio.cc/images/30days/02/003.png" alt=""></p>
+<h6 id="打开像这样"><a href="#打开像这样" class="headerlink" title="打开像这样"></a>打开像这样</h6><p><img src="http://php.smstudio.cc/images/30days/02/004.png" alt=""></p>
+<h6 id="然后在里面找到搜索localRepository这个关键字-会找到这一行"><a href="#然后在里面找到搜索localRepository这个关键字-会找到这一行" class="headerlink" title="然后在里面找到搜索localRepository这个关键字,会找到这一行"></a>然后在里面找到搜索<code>localRepository</code>这个关键字,会找到这一行</h6><p><img src="http://php.smstudio.cc/images/30days/02/005.png" alt=""></p>
+<h6 id="然后把这一行复制出来"><a href="#然后把这一行复制出来" class="headerlink" title="然后把这一行复制出来"></a>然后把这一行复制出来</h6><p><img src="http://php.smstudio.cc/images/30days/02/006.png" alt=""></p>
+<p>将里面的<code>/path/to/local/repo</code>路径改成你想要的路径，如<code>D:\jarstore</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/02/007.png" alt=""></p>
+<h6 id="然后再找mirrors这个节点"><a href="#然后再找mirrors这个节点" class="headerlink" title="然后再找mirrors这个节点"></a>然后再找<code>mirrors</code>这个节点</h6><p><img src="http://php.smstudio.cc/images/30days/02/008.png" alt=""></p>
+<h6 id="找到之后，将这一行复制出来-注意别复制出-lt-mirrors-gt-这个父节点"><a href="#找到之后，将这一行复制出来-注意别复制出-lt-mirrors-gt-这个父节点" class="headerlink" title="找到之后，将这一行复制出来 注意别复制出 &lt;mirrors&gt; 这个父节点"></a>找到之后，将这一行复制出来 <em>注意别复制出 <code>&lt;mirrors&gt;</code> 这个父节点</em></h6><p><img src="http://php.smstudio.cc/images/30days/02/009.png" alt=""></p>
+<h6 id="现在我们要把镜像换成国内的，这样下载Jar包的时候会快很多"><a href="#现在我们要把镜像换成国内的，这样下载Jar包的时候会快很多" class="headerlink" title="现在我们要把镜像换成国内的，这样下载Jar包的时候会快很多"></a>现在我们要把镜像换成国内的，这样下载Jar包的时候会快很多</h6><p>这是阿里的Maven镜像地址：</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">mirror</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">id</span>&gt;</span>nexus-aliyun<span class="tag">&lt;/<span class="name">id</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">mirrorOf</span>&gt;</span>*<span class="tag">&lt;/<span class="name">mirrorOf</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">name</span>&gt;</span>Nexus aliyun<span class="tag">&lt;/<span class="name">name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.aliyun.com/nexus/content/groups/public<span class="tag">&lt;/<span class="name">url</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">mirror</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="http://php.smstudio.cc/images/30days/02/010.png" alt=""></p>
+<h6 id="修改完成之后，记得保存，现在我们打开Eclipse-在工具栏中找到window-gt-preferences"><a href="#修改完成之后，记得保存，现在我们打开Eclipse-在工具栏中找到window-gt-preferences" class="headerlink" title="修改完成之后，记得保存，现在我们打开Eclipse,在工具栏中找到window-&gt;preferences"></a>修改完成之后，记得保存，现在我们打开<code>Eclipse</code>,在工具栏中找到<code>window</code>-&gt;<code>preferences</code></h6><p><img src="http://php.smstudio.cc/images/30days/02/011.png" alt=""></p>
+<h6 id="我们在弹出的界面中-输入-maven"><a href="#我们在弹出的界面中-输入-maven" class="headerlink" title="我们在弹出的界面中 输入 maven"></a>我们在弹出的界面中 输入 <code>maven</code></h6><h6 id=""><a href="#" class="headerlink" title=""></a><img src="http://php.smstudio.cc/images/30days/02/012.png" alt=""></h6><h6 id="在这里选择installations"><a href="#在这里选择installations" class="headerlink" title="在这里选择installations"></a>在这里选择<code>installations</code></h6><p><img src="http://php.smstudio.cc/images/30days/02/013.png" alt=""></p>
+<h6 id="然后点击add-gt-Directory-然后选择我们刚刚解压的maven压缩包的地址"><a href="#然后点击add-gt-Directory-然后选择我们刚刚解压的maven压缩包的地址" class="headerlink" title="然后点击add-&gt;Directory 然后选择我们刚刚解压的maven压缩包的地址"></a>然后点击<code>add</code>-&gt;<code>Directory</code> 然后选择我们刚刚解压的maven压缩包的地址</h6><p>​    <img src="http://php.smstudio.cc/images/30days/02/014.png" alt=""></p>
+<pre><code>###### 地址选择完了之后，点击`finish`之后的界面会如下图所示。
+</code></pre><p><img src="http://php.smstudio.cc/images/30days/02/015.png" alt=""></p>
+<h6 id="现在把刚刚添加的maven前面的勾，选上，然后点击apply"><a href="#现在把刚刚添加的maven前面的勾，选上，然后点击apply" class="headerlink" title="现在把刚刚添加的maven前面的勾，选上，然后点击apply"></a>现在把刚刚添加的maven前面的勾，选上，然后点击<code>apply</code></h6><p><img src="http://php.smstudio.cc/images/30days/02/016.png" alt=""></p>
+<h6 id="找到User-Settings，点击User-Settings-后面的Browse"><a href="#找到User-Settings，点击User-Settings-后面的Browse" class="headerlink" title="找到User Settings，点击User Settings:后面的Browse"></a>找到<code>User Settings</code>，点击<code>User Settings:</code>后面的Browse</h6><p><img src="http://php.smstudio.cc/images/30days/02/017.png" alt=""></p>
+<h6 id="选择之前修改的settings文件，"><a href="#选择之前修改的settings文件，" class="headerlink" title="选择之前修改的settings文件，"></a>选择之前修改的settings文件，</h6><p><img src="http://php.smstudio.cc/images/30days/02/018.png" alt=""></p>
+<h6 id="然后点击Update-Settings，注意看下面的Local-respository变成了我们之前修改的目录了"><a href="#然后点击Update-Settings，注意看下面的Local-respository变成了我们之前修改的目录了" class="headerlink" title="然后点击Update Settings，注意看下面的Local respository变成了我们之前修改的目录了"></a>然后点击<code>Update Settings</code>，注意看下面的<code>Local respository</code>变成了我们之前修改的目录了</h6><p><img src="http://php.smstudio.cc/images/30days/02/019.png" alt=""></p>
+<h6 id="这个时候点击-Apply-按钮，到这里-maven就已经安装完成了。"><a href="#这个时候点击-Apply-按钮，到这里-maven就已经安装完成了。" class="headerlink" title="这个时候点击 Apply 按钮，到这里 maven就已经安装完成了。"></a>这个时候点击 <code>Apply</code> 按钮，到这里 maven就已经安装完成了。</h6><p>​</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/smstudio.github.io/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'http://www.smstudio.club/wp-content/uploads/2017/10/微信图片_20171018115533.jpg',
+  alipayImage: 'http://www.smstudio.club/wp-content/uploads/2017/12/19B3A3ACEC530836641D53067D699129-1.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/smstudio.github.io/2018/01/02/《30天带你学30种新技术》第一天：SVN版本控制/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">《30天带你学30种新技术》第一天：SVN版本控制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#maven-包管理器"><span class="nav-number">1.</span> <span class="nav-text">maven 包管理器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#maven"><span class="nav-number">1.0.1.</span> <span class="nav-text">maven</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用："><span class="nav-number">1.0.2.</span> <span class="nav-text">如何使用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文："><span class="nav-number">1.0.3.</span> <span class="nav-text">正文：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#什么是maven？"><span class="nav-number">1.0.4.</span> <span class="nav-text">什么是maven？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用？"><span class="nav-number">1.0.5.</span> <span class="nav-text">如何使用？</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#首先去官网下载页下载最新的Maven"><span class="nav-number">1.0.5.1.</span> <span class="nav-text">首先去官网下载页下载最新的Maven</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装"><span class="nav-number">1.0.5.2.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#首先将下载的压缩包解压到制定的地方，如我解压在D盘30days文件夹下面"><span class="nav-number">1.0.5.2.0.1.</span> <span class="nav-text">首先将下载的压缩包解压到制定的地方，如我解压在D盘30days文件夹下面</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#打开像这样"><span class="nav-number">1.0.5.2.0.2.</span> <span class="nav-text">打开像这样</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#然后在里面找到搜索localRepository这个关键字-会找到这一行"><span class="nav-number">1.0.5.2.0.3.</span> <span class="nav-text">然后在里面找到搜索localRepository这个关键字,会找到这一行</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#然后把这一行复制出来"><span class="nav-number">1.0.5.2.0.4.</span> <span class="nav-text">然后把这一行复制出来</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#然后再找mirrors这个节点"><span class="nav-number">1.0.5.2.0.5.</span> <span class="nav-text">然后再找mirrors这个节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#找到之后，将这一行复制出来-注意别复制出-lt-mirrors-gt-这个父节点"><span class="nav-number">1.0.5.2.0.6.</span> <span class="nav-text">找到之后，将这一行复制出来 注意别复制出 &lt;mirrors&gt; 这个父节点</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#现在我们要把镜像换成国内的，这样下载Jar包的时候会快很多"><span class="nav-number">1.0.5.2.0.7.</span> <span class="nav-text">现在我们要把镜像换成国内的，这样下载Jar包的时候会快很多</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#修改完成之后，记得保存，现在我们打开Eclipse-在工具栏中找到window-gt-preferences"><span class="nav-number">1.0.5.2.0.8.</span> <span class="nav-text">修改完成之后，记得保存，现在我们打开Eclipse,在工具栏中找到window-&gt;preferences</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#我们在弹出的界面中-输入-maven"><span class="nav-number">1.0.5.2.0.9.</span> <span class="nav-text">我们在弹出的界面中 输入 maven</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#"><span class="nav-number">1.0.5.2.0.10.</span> <span class="nav-text"></span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#在这里选择installations"><span class="nav-number">1.0.5.2.0.11.</span> <span class="nav-text">在这里选择installations</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#然后点击add-gt-Directory-然后选择我们刚刚解压的maven压缩包的地址"><span class="nav-number">1.0.5.2.0.12.</span> <span class="nav-text">然后点击add-&gt;Directory 然后选择我们刚刚解压的maven压缩包的地址</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#现在把刚刚添加的maven前面的勾，选上，然后点击apply"><span class="nav-number">1.0.5.2.0.13.</span> <span class="nav-text">现在把刚刚添加的maven前面的勾，选上，然后点击apply</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#找到User-Settings，点击User-Settings-后面的Browse"><span class="nav-number">1.0.5.2.0.14.</span> <span class="nav-text">找到User Settings，点击User Settings:后面的Browse</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#选择之前修改的settings文件，"><span class="nav-number">1.0.5.2.0.15.</span> <span class="nav-text">选择之前修改的settings文件，</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#然后点击Update-Settings，注意看下面的Local-respository变成了我们之前修改的目录了"><span class="nav-number">1.0.5.2.0.16.</span> <span class="nav-text">然后点击Update Settings，注意看下面的Local respository变成了我们之前修改的目录了</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#这个时候点击-Apply-按钮，到这里-maven就已经安装完成了。"><span class="nav-number">1.0.5.2.0.17.</span> <span class="nav-text">这个时候点击 Apply 按钮，到这里 maven就已经安装完成了。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 SMStudio All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/smstudio.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/smstudio.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/smstudio.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/smstudio.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/smstudio.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/smstudio.github.io/fancybox/jquery.fancybox.css">
+  <script src="/smstudio.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/smstudio.github.io/js/scripts.js"></script>
+
+
+
+
+  <script src="/smstudio.github.io/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            SMStudio
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 魏巍 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="https://xiaomochen520.github.io/smstudio.github.io/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
