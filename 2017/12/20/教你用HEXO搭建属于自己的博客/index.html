@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>教你用hexo搭建属于自己的博客 | SMStudio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="我们平时遇到问题时，就回去百度搜索相关问题，就会搜到很多知名网站的帖子，有很多大牛在里面分享经验，只是。久了，不知道有没有小伙伴想要自己弄一个博客，但是又不知道如何开始。那么本篇文章就是为你准备的。  HEXO 是什么？ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  为什么要使用HEXO？​">
+<meta property="og:type" content="article">
+<meta property="og:title" content="教你用HEXO搭建属于自己的博客">
+<meta property="og:url" content="https://xiaomochen520.github.io/smstudio.github.io/2017/12/20/教你用HEXO搭建属于自己的博客/index.html">
+<meta property="og:site_name" content="SMStudio">
+<meta property="og:description" content="我们平时遇到问题时，就回去百度搜索相关问题，就会搜到很多知名网站的帖子，有很多大牛在里面分享经验，只是。久了，不知道有没有小伙伴想要自己弄一个博客，但是又不知道如何开始。那么本篇文章就是为你准备的。  HEXO 是什么？ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  为什么要使用HEXO？​">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-12-20T06:08:36.696Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="教你用HEXO搭建属于自己的博客">
+<meta name="twitter:description" content="我们平时遇到问题时，就回去百度搜索相关问题，就会搜到很多知名网站的帖子，有很多大牛在里面分享经验，只是。久了，不知道有没有小伙伴想要自己弄一个博客，但是又不知道如何开始。那么本篇文章就是为你准备的。  HEXO 是什么？ Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。  为什么要使用HEXO？​">
+  
+    <link rel="alternate" href="/atom.xml" title="SMStudio" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/smstudio.github.io/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/smstudio.github.io/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/smstudio.github.io/css/style.css">
+
+  <script src="/smstudio.github.io/js/jquery-3.1.1.min.js"></script>
+  <script src="/smstudio.github.io/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/smstudio.github.io/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/smstudio.github.io/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/smstudio.github.io/',
+        CONTENT_URL: '/smstudio.github.io/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/smstudio.github.io/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-教你用HEXO搭建属于自己的博客" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      教你用HEXO搭建属于自己的博客
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/smstudio.github.io/2017/12/20/教你用HEXO搭建属于自己的博客/" class="article-date">
+	  <time datetime="2017-12-20T04:57:50.000Z" itemprop="datePublished">2017-12-20</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p> 我们平时遇到问题时，就回去百度搜索相关问题，就会搜到很多知名网站的帖子，有很多大牛在里面分享经验，只是。久了，不知道有没有小伙伴想要自己弄一个博客，但是又不知道如何开始。那么本篇文章就是为你准备的。</p>
+</blockquote>
+<h2 id="HEXO-是什么？"><a href="#HEXO-是什么？" class="headerlink" title="HEXO 是什么？"></a>HEXO 是什么？</h2><blockquote>
+<p>Hexo 是一个快速、简洁且高效的博客框架。Hexo 使用 <a href="http://daringfireball.net/projects/markdown/" target="_blank" rel="noopener">Markdown</a>（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p>
+</blockquote>
+<h2 id="为什么要使用HEXO？"><a href="#为什么要使用HEXO？" class="headerlink" title="为什么要使用HEXO？"></a>为什么要使用HEXO？</h2><p>​        是的，为什么要使用HEXO，WordPress、Discuz等知名平台不可以搭建个人博客么？答案当然是可以，而且也不是很复杂。但是，你把本文看完了，我相信这个问题你也就有答案了。</p>
+<h2 id="如何使用HEXO"><a href="#如何使用HEXO" class="headerlink" title="如何使用HEXO?"></a>如何使用HEXO?</h2><h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p><strong>Hexo</strong> 依赖NodeJS，Git</p>
+<h4 id="安装NodeJS、Git"><a href="#安装NodeJS、Git" class="headerlink" title="安装NodeJS、Git"></a>安装NodeJS、Git</h4><blockquote>
+<p>如果你没有接触过Node’JS，也请照着步骤做</p>
+</blockquote>
+<h6 id="安装NodeJS"><a href="#安装NodeJS" class="headerlink" title="安装NodeJS"></a>安装NodeJS</h6><ol>
+<li><p>打开 <a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener"> NodeJS官网下载页面 </a>  ，选择有LTS字样的版本下载，也可以点击 <a href="https://nodejs.org/dist/v8.9.3/node-v8.9.3-x64.msi" target="_blank" rel="noopener">这里</a>  这个连接是官网的下载连接，也可以去<a href="http://php.smstudio.cc" target="_blank" rel="noopener">我的文件站</a> 下载。<ps:服务器是我自己的，网速最多140kb s=""> </ps:服务器是我自己的，网速最多140kb></p>
+</li>
+<li><p>打开刚刚下载的文件，双击它，然后一路下一步到底。</p>
+</li>
+<li><p>打开cmd窗口，输入 <code>node -v</code> 返回给你node的版本号就是已经安装成功了。</p>
+<blockquote>
+<p>写的不够完整请看官别介意，我会单独新写一篇博文来介绍安装NodeJS</p>
+</blockquote>
+</li>
+</ol>
+<h6 id="安装Git"><a href="#安装Git" class="headerlink" title="安装Git"></a>安装Git</h6><ol>
+<li>打开<a href="https://git-scm.com/download/win" target="_blank" rel="noopener">Git官网的下载页面</a>， 这个界面会自动下载适合你电脑版本的Git客户端。也可以去<a href="http://php.smstudio.cc" target="_blank" rel="noopener">我的文件站</a> 下载<a href="http://php.smstudio.cc/Git-2.15.1.2-32-bit.exe" target="_blank" rel="noopener">Git-2.15.1.2 32位</a>  和 <a href="http://php.smstudio.cc/Git-2.15.1.2-64-bit.exe" target="_blank" rel="noopener">Git-2.15.1.2 64位</a> <ps:服务器是我自己的，网速最多140kb s=""> </ps:服务器是我自己的，网速最多140kb></li>
+<li>​</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/smstudio.github.io/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'http://www.smstudio.club/wp-content/uploads/2017/10/微信图片_20171018115533.jpg',
+  alipayImage: 'http://www.smstudio.club/wp-content/uploads/2017/12/19B3A3ACEC530836641D53067D699129-1.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/smstudio.github.io/2018/01/01/Hello-2018/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Hello 2018
+        
+      </div>
+    </a>
+  
+  
+    <a href="/smstudio.github.io/2017/12/19/你有时间么-有时间我们一起搭建自己的ngrok服务器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">你有时间么?有时间我们一起搭建自己的ngrok服务器.</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#HEXO-是什么？"><span class="nav-number">1.</span> <span class="nav-text">HEXO 是什么？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为什么要使用HEXO？"><span class="nav-number">2.</span> <span class="nav-text">为什么要使用HEXO？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何使用HEXO"><span class="nav-number">3.</span> <span class="nav-text">如何使用HEXO?</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装"><span class="nav-number">3.1.</span> <span class="nav-text">安装</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装NodeJS、Git"><span class="nav-number">3.1.1.</span> <span class="nav-text">安装NodeJS、Git</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#安装NodeJS"><span class="nav-number">3.1.1.0.1.</span> <span class="nav-text">安装NodeJS</span></a></li><li class="nav-item nav-level-6"><a class="nav-link" href="#安装Git"><span class="nav-number">3.1.1.0.2.</span> <span class="nav-text">安装Git</span></a></li></ol></li></ol></li></ol></li></ol></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 SMStudio All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/smstudio.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/smstudio.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/smstudio.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/smstudio.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/smstudio.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/smstudio.github.io/fancybox/jquery.fancybox.css">
+  <script src="/smstudio.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/smstudio.github.io/js/scripts.js"></script>
+
+
+
+
+  <script src="/smstudio.github.io/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            SMStudio
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 魏巍 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="https://xiaomochen520.github.io/smstudio.github.io/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>

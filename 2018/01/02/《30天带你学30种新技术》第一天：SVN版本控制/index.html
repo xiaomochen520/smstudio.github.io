@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>《30天带你学30种新技术》第一天：svn版本控制 | SMStudio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  
+  
+  
+  <meta name="description" content="SVN版本控制SVN: SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。  如何使用： 如果说，你是一位刚接触工作不久或者即将走向工作岗位的IT人才，那你一定要好好看看这篇文章了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《30天带你学30种新技术》第一天：SVN版本控制">
+<meta property="og:url" content="https://xiaomochen520.github.io/smstudio.github.io/2018/01/02/《30天带你学30种新技术》第一天：SVN版本控制/index.html">
+<meta property="og:site_name" content="SMStudio">
+<meta property="og:description" content="SVN版本控制SVN: SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。  如何使用： 如果说，你是一位刚接触工作不久或者即将走向工作岗位的IT人才，那你一定要好好看看这篇文章了">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/001.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/002.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/003.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/004.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/005.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/006.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/007.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/008.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/009.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/010.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/011.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/012.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/013.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/014.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/015.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/016.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/017.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/018.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/019.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/020.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/021.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/022.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/025.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/024.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/026.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/027.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/028.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/029.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/030.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/031.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/033.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/032.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/034.png">
+<meta property="og:image" content="http://php.smstudio.cc/images/30days/01/035.png">
+<meta property="og:updated_time" content="2018-01-17T09:29:19.943Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《30天带你学30种新技术》第一天：SVN版本控制">
+<meta name="twitter:description" content="SVN版本控制SVN: SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。  如何使用： 如果说，你是一位刚接触工作不久或者即将走向工作岗位的IT人才，那你一定要好好看看这篇文章了">
+<meta name="twitter:image" content="http://php.smstudio.cc/images/30days/01/001.png">
+  
+    <link rel="alternate" href="/atom.xml" title="SMStudio" type="application/atom+xml">
+  
+
+  
+
+  <link rel="icon" href="/smstudio.github.io/css/images/mylogo.jpg">
+  <link rel="apple-touch-icon" href="/smstudio.github.io/css/images/mylogo.jpg">
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans|Montserrat:700" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,300italic,400italic" rel="stylesheet" type="text/css">
+  <link href="//cdn.bootcss.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <style type="text/css">
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/9749f0/00000000000000000001008f/27/l?subset_id=2&fvd=n5) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/90cf9f/000000000000000000010091/27/l?subset_id=2&fvd=n7) format("woff2");font-weight:500;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/8a5494/000000000000000000013365/27/l?subset_id=2&fvd=n4) format("woff2");font-weight:lighter;font-style:normal;}
+    @font-face{font-family:futura-pt;src:url(https://use.typekit.net/af/d337d8/000000000000000000010095/27/l?subset_id=2&fvd=i4) format("woff2");font-weight:400;font-style:italic;}</style>
+  <link rel="stylesheet" href="/smstudio.github.io/css/style.css">
+
+  <script src="/smstudio.github.io/js/jquery-3.1.1.min.js"></script>
+  <script src="/smstudio.github.io/js/bootstrap.js"></script>
+
+  <!-- Bootstrap core CSS -->
+  <link rel="stylesheet" href="/smstudio.github.io/css/bootstrap.css" >
+
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/dialog.css">
+  
+
+  
+
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/header-post.css" >
+  
+
+  
+  
+  
+    <link rel="stylesheet" href="/smstudio.github.io/css/vdonate.css" >
+  
+
+</head>
+
+
+
+  <body data-spy="scroll" data-target="#toc" data-offset="50">
+
+
+  
+  <div id="container">
+    <div id="wrap">
+      
+        <header>
+
+    <div id="allheader" class="navbar navbar-default navbar-static-top" role="navigation">
+        <div class="navbar-inner">
+          
+          <div class="container"> 
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+
+            
+              <a class="brand" style="
+                 margin-top: 0px;"  
+                href="#" data-toggle="modal" data-target="#myModal" >
+                  <img width="124px" height="124px" alt="Hike News" src="/smstudio.github.io/css/images/mylogo.jpg">
+              </a>
+            
+            
+            <div class="navbar-collapse collapse">
+              <ul class="hnav navbar-nav">
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/">首页</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/archives">归档</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/categories">分类</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/tags">标签</a> </li>
+                
+                  <li> <a class="main-nav-link" href="/smstudio.github.io/about">关于</a> </li>
+                
+                  <li><div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="" />
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="请输入关键词..." />
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(无标题)',
+        },
+        ROOT_URL: '/smstudio.github.io/',
+        CONTENT_URL: '/smstudio.github.io/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/smstudio.github.io/js/insight.js"></script>
+
+</div></li>
+            </div>
+          </div>
+                
+      </div>
+    </div>
+
+</header>
+
+
+
+      
+            
+      <div id="content" class="outer">
+        
+          <section id="main" style="float:none;"><article id="post-《30天带你学30种新技术》第一天：SVN版本控制" style="width: 75%; float:left;" class="article article-type-post" itemscope itemprop="blogPost" >
+  <div id="articleInner" class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="thumb" class="article-title" itemprop="name">
+      《30天带你学30种新技术》第一天：SVN版本控制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-meta">
+      
+	<a href="/smstudio.github.io/2018/01/02/《30天带你学30种新技术》第一天：SVN版本控制/" class="article-date">
+	  <time datetime="2018-01-01T16:00:00.000Z" itemprop="datePublished">2018-01-02</time>
+	</a>
+
+      
+      
+	<a class="article-views">
+	<span id="busuanzi_container_page_pv">
+		阅读量<span id="busuanzi_value_page_pv"></span>
+	</span>
+	</a>
+
+    </div>
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="SVN版本控制"><a href="#SVN版本控制" class="headerlink" title="SVN版本控制"></a>SVN版本控制</h2><h3 id="SVN"><a href="#SVN" class="headerlink" title="SVN:"></a>SVN:</h3><blockquote>
+<p>SVN是Subversion的简称，是一个开放源代码的版本控制系统，相较于RCS、CVS，它采用了分支管理系统，它的设计目标就是取代CVS。互联网上很多版本控制服务已从CVS迁移到Subversion。说得简单一点SVN就是用于多个人共同开发同一个项目，共用资源的目的。</p>
+</blockquote>
+<h3 id="如何使用："><a href="#如何使用：" class="headerlink" title="如何使用："></a>如何使用：</h3><blockquote>
+<p>如果说，你是一位刚接触工作不久或者即将走向工作岗位的IT人才，那你一定要好好看看这篇文章了。</p>
+</blockquote>
+<h3 id="正文："><a href="#正文：" class="headerlink" title="正文："></a>正文：</h3><blockquote>
+<p>小菜在几轮面试下来之后，终于拿到某公司的一份还比较满意的offer。因为之前在学校表现优异，所以也算是比较早找到工作的一名学生。但是到了入职那一天，领导给了他一些文档，以及各种帐号并让他从<code>SVN</code> <code>服务器</code> <code>检出</code>一个项目来熟悉<code>业务</code>。有点不知所措的小菜完全不知道接下来该怎么办。小李开始怀疑自己是不是上了一个假大学，为什么还有的名词听都没听过？一个大大的文号。</p>
+</blockquote>
+<p>当即将走向工作岗位的你在公司遇到这种情况，千万不要怕，也不要慌。我们一起来有条不紊的去解决这个棘手的问题。</p>
+<p>首先，你得安装好你的一些开发工具：</p>
+<p>jdk、eclipse、有道云笔记、navicat等等</p>
+<p><strong><em>这些工具的安装不在本篇文章内。文章以eclipse 4.6.2 、jdk 1.8.0_144为准。</em></strong></p>
+<h3 id="1-首先打开Eclipse"><a href="#1-首先打开Eclipse" class="headerlink" title="1.首先打开Eclipse"></a>1.首先打开Eclipse</h3><p><img src="http://php.smstudio.cc/images/30days/01/001.png" alt=""></p>
+<p>在菜单栏找到<code>help</code> 并且点击他，在弹出的菜单里找到<code>Install New Software</code> 并且点击他，会弹出如下所示的界面</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/002.png" alt=""></p>
+<p>点击Add，在弹出的框里输入如下字符：</p>
+<blockquote>
+<p>Name: svn</p>
+<p>Location: <a href="http://subclipse.tigris.org/update_1.8.x" target="_blank" rel="noopener">http://subclipse.tigris.org/update_1.8.x</a></p>
+</blockquote>
+<p><img src="http://php.smstudio.cc/images/30days/01/003.png" alt=""></p>
+<p>点击` OK 按钮之后，然后就静静的等待。这是看网速的时候，因为服务器在国外。</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/004.png" alt=""></p>
+<p>出现如上图所示的界面之后，就说明已经找到资源了，点击 <code>Select All</code> 按钮</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/005.png" alt=""></p>
+<p>点击<code>Select All</code>按钮之后，再点击<code>Next</code>按钮</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/006.png" alt=""></p>
+<p>然后接着点击<code>Next</code>按钮</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/007.png" alt=""></p>
+<p>然后接着点击我同意 <code>I accept the terms of the lincese agreements</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/008.png" alt=""></p>
+<p>然后接着点击 <code>Finish</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/009.png" alt=""></p>
+<p>点击<code>Finish</code>之后 就静静的等他跑完。</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/010.png" alt=""></p>
+<p>出现让你重启的界面就已经安装成功了。<strong><em>写博客的时候我等了一个多小时</em></strong></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/011.png" alt="img"></p>
+<p>点击<code>Yes</code>按钮，等他重启好。</p>
+<h1 id="检出项目"><a href="#检出项目" class="headerlink" title="检出项目"></a>检出项目</h1><p>打开之后 我们选择<code>File</code>-&gt;<code>Import</code> 在打开的界面中输入<code>svn</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/012.png" alt=""></p>
+<p>点击<code>Next</code> 之后，弹出如下界面，选择<code>创建新的资源库位置</code> </p>
+<p><img src="http://php.smstudio.cc/images/30days/01/013.png" alt=""></p>
+<p>点击<code>Next</code>之后，弹出如下界面，在文本框输入项目经理给你的svn地址</p>
+<p>这里我输入我的测试地址”<a href="http://svn.smstudio.cc/svn/test" target="_blank" rel="noopener">http://svn.smstudio.cc/svn/test</a>“</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/014.png" alt=""></p>
+<p>点击<code>Next</code>之后，会要求你输入密码，输入你项目经理给你的账号以及密码，请将<strong>保存密码</strong>勾上</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/015.png" alt=""></p>
+<p>输入账号密码之后，点击OK，会出现如下图所示，用鼠标点击一下这个资源库，也就是我选中的这个地方，点击了之后下面的<code>Next</code>按钮才可以点击。</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/016.png" alt=""></p>
+<p><code>Next</code>按钮出来之后，点击他，</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/017.png" alt=""></p>
+<p>新弹出的界面如下图所示，选择 <code>作为工作空间中的项目检出</code>，然后接着点击<code>Next</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/018.png" alt=""></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/019.png" alt=""></p>
+<p>点击<code>Next</code>之后，会弹出如下图所示的界面，保持默认设置就好，如果你需要将项目保存至你想保存的位置，那就自己选择路径。完了之后，点击<code>Finish</code>按钮。</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/020.png" alt=""></p>
+<p>点击<code>Yes</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/021.png" alt=""></p>
+<p>这个时候，你就能在项目里面看到你的SVN项目了。:）</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/022.png" alt=""></p>
+<h1 id="SVN提交及更新"><a href="#SVN提交及更新" class="headerlink" title="SVN提交及更新"></a>SVN提交及更新</h1><blockquote>
+<p>SVN的项目已经更新下来了，这个时候 项目经理走到小菜旁边，看着小菜已经把项目从SVN上到处，经理笑笑，说：“你先把项目好好看看，快的话 三天就可以让你上项目”。小菜心里暗喜，这是经理对他的认可，他又开始接着学习SVN的日常操作。</p>
+<p>小菜已经编写好一个文件，但是不知道怎么上传至SVN服务器，这下有点不知所措。</p>
+</blockquote>
+<p>我们遇到小菜这种情况，要冷静对待。</p>
+<h2 id="第一步：先于SVN服务器同步"><a href="#第一步：先于SVN服务器同步" class="headerlink" title="第一步：先于SVN服务器同步"></a>第一步：先于SVN服务器同步</h2><p>我们在修改过项目之后，项目的图标前面会多一个<code>*</code>号图标，如下图：</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/025.png" alt=""></p>
+<p>我们在项目上右键单击，选择<code>Team</code>-&gt;<code>与资源库同步</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/024.png" alt=""></p>
+<p>Eclipse会弹出一个询问层，意思大致为：“你是否要以资源管理器试图打开？” 点击 <code>No</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/026.png" alt=""></p>
+<p>点击<code>No</code>之后，会多出一个<code>synchronize</code>的选项卡</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/027.png" alt=""></p>
+<h2 id="第二步：提交"><a href="#第二步：提交" class="headerlink" title="第二步：提交"></a>第二步：提交</h2><p>在这个选项卡中的项目名上点击右键，如下图</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/028.png" alt=""></p>
+<p>在弹出的菜单中，选择<code>提交</code>按钮，之后会弹出如下所示的界面，请按照项目经理的标准如填写：</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/029.png" alt=""></p>
+<p>如：</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/030.png" alt=""></p>
+<p>点击<code>OK</code> ,等进度条跑完，这个时候你会发现，项目上的<code>*</code>号不见了，那么恭喜你，你提交成功了。</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/031.png" alt=""></p>
+<h2 id="第三步：更新"><a href="#第三步：更新" class="headerlink" title="第三步：更新"></a>第三步：更新</h2><p>同样的，先与服务器同步，先点击同步按钮</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/033.png" alt=""></p>
+<p>你会在下面的资源管理器试图中看到有新文件需要下载</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/032.png" alt=""></p>
+<p>选中，右键单机，找到<code>更新</code></p>
+<p><img src="http://php.smstudio.cc/images/30days/01/034.png" alt=""></p>
+<p>点击了<code>更新</code>之后，你会发现项目中已经多了别人提交的文件了。</p>
+<p><img src="http://php.smstudio.cc/images/30days/01/035.png" alt=""></p>
+<blockquote>
+<p>小菜，上班的一天就用来安装环境和学习SVN了，心里还是很满足，因为自己离工作又近了一步。</p>
+</blockquote>
+<p>: )</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <div id="donation_div"></div>
+
+<script src="/smstudio.github.io/js/vdonate.js"></script>
+<script>
+var a = new Donate({
+  title: '如果觉得我的文章对您有用，请随意打赏。您的支持将鼓励我继续创作!', // 可选参数，打赏标题
+  btnText: '打赏支持', // 可选参数，打赏按钮文字
+  el: document.getElementById('donation_div'),
+  wechatImage: 'http://www.smstudio.club/wp-content/uploads/2017/10/微信图片_20171018115533.jpg',
+  alipayImage: 'http://www.smstudio.club/wp-content/uploads/2017/12/19B3A3ACEC530836641D53067D699129-1.jpg'
+});
+</script>
+      
+      
+        
+	<div id="comment">
+		<!-- 来必力City版安装代码 -->
+		<div id="lv-container" data-id="city" data-uid="MTAyMC8yOTQ4MS82MDQ5">
+		<script type="text/javascript">
+		   (function(d, s) {
+		       var j, e = d.getElementsByTagName(s)[0];
+
+		       if (typeof LivereTower === 'function') { return; }
+
+		       j = d.createElement(s);
+		       j.src = 'https://cdn-city.livere.com/js/embed.dist.js';
+		       j.async = true;
+
+		       e.parentNode.insertBefore(j, e);
+		   })(document, 'script');
+		</script>
+		<noscript>为正常使用来必力评论功能请激活JavaScript</noscript>
+		</div>
+		<!-- City版安装代码已完成 -->
+	</div>
+
+
+
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/smstudio.github.io/2018/01/01/Hello-2018/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">Hello 2018</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+<!-- Table of Contents -->
+
+  <aside id="toc-sidebar">
+    <div id="toc" class="toc-article">
+    <strong class="toc-title">文章目录</strong>
+    
+        <ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#SVN版本控制"><span class="nav-number">1.</span> <span class="nav-text">SVN版本控制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SVN"><span class="nav-number">1.1.</span> <span class="nav-text">SVN:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#如何使用："><span class="nav-number">1.2.</span> <span class="nav-text">如何使用：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#正文："><span class="nav-number">1.3.</span> <span class="nav-text">正文：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-首先打开Eclipse"><span class="nav-number">1.4.</span> <span class="nav-text">1.首先打开Eclipse</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#检出项目"><span class="nav-number"></span> <span class="nav-text">检出项目</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#SVN提交及更新"><span class="nav-number"></span> <span class="nav-text">SVN提交及更新</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#第一步：先于SVN服务器同步"><span class="nav-number">1.</span> <span class="nav-text">第一步：先于SVN服务器同步</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第二步：提交"><span class="nav-number">2.</span> <span class="nav-text">第二步：提交</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#第三步：更新"><span class="nav-number">3.</span> <span class="nav-text">第三步：更新</span></a></li></ol>
+    
+    </div>
+  </aside>
+</section>
+        
+      </div>
+      
+      <footer id="footer">
+  
+
+  <div class="container">
+      	<div class="row">
+	      <p> Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/iTimeTraveler/hexo-theme-hiker" target="_blank">Hexo-theme-hiker</a> </p>
+	      <p id="copyRightEn">Copyright &copy; 2013 - 2018 SMStudio All Rights Reserved.</p>
+	      
+	      
+    		<p class="busuanzi_uv">
+				访客数 : <span id="busuanzi_value_site_uv"></span> |  
+				访问量 : <span id="busuanzi_value_site_pv"></span>
+		    </p>
+  		   
+		</div>
+
+		
+  </div>
+</footer>
+
+
+<!-- min height -->
+
+<script>
+    var wrapdiv = document.getElementById("wrap");
+    var contentdiv = document.getElementById("content");
+    var allheader = document.getElementById("allheader");
+
+    wrapdiv.style.minHeight = document.body.offsetHeight + "px";
+    if (allheader != null) {
+      contentdiv.style.minHeight = document.body.offsetHeight - allheader.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    } else {
+      contentdiv.style.minHeight = document.body.offsetHeight - document.getElementById("footer").offsetHeight + "px";
+    }
+</script>
+    </div>
+    <!-- <nav id="mobile-nav">
+  
+    <a href="/smstudio.github.io/" class="mobile-nav-link">Home</a>
+  
+    <a href="/smstudio.github.io/archives" class="mobile-nav-link">Archives</a>
+  
+    <a href="/smstudio.github.io/categories" class="mobile-nav-link">Categories</a>
+  
+    <a href="/smstudio.github.io/tags" class="mobile-nav-link">Tags</a>
+  
+    <a href="/smstudio.github.io/about" class="mobile-nav-link">About</a>
+  
+</nav> -->
+    
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+      processEscapes: true
+    }
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for(i=0; i < all.length; i += 1) {
+            all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+
+<script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  <link rel="stylesheet" href="/smstudio.github.io/fancybox/jquery.fancybox.css">
+  <script src="/smstudio.github.io/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/smstudio.github.io/js/scripts.js"></script>
+
+
+
+
+  <script src="/smstudio.github.io/js/dialog.js"></script>
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+    <script src="https://s95.cnzz.com/z_stat.php?id=1260716016&web_id=1260716016" language="JavaScript"></script>
+  </div>
+
+
+
+	<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js">
+	</script>
+
+
+
+
+
+
+  </div>
+
+  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="myModalLabel">设置</h2>
+      </div>
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+
+
+      <div class="modal-body">
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" onclick="javascript:setFontSize();" aria-expanded="true" aria-controls="collapseOne">
+              正文字号大小
+            </a>
+          </div>
+          <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+          <div class="panel-body">
+            您已调整页面字体大小
+          </div>
+        </div>
+      
+
+
+          <div style="margin:6px;">
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" onclick="javascript:setBackground();" aria-expanded="true" aria-controls="collapseTwo">
+              夜间护眼模式
+            </a>
+        </div>
+          <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+          <div class="panel-body">
+            夜间模式已经开启，再次单击按钮即可关闭 
+          </div>
+        </div>
+
+        <div>
+            <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="true" aria-controls="collapseThree">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;关 于&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+        </div>
+         <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+          <div class="panel-body">
+            SMStudio
+          </div>
+          <div class="panel-body">
+            Copyright © 2018 魏巍 All Rights Reserved.
+          </div>
+        </div>
+      </div>
+
+
+      <hr style="margin-top:0px; margin-bottom:0px; width:80%; border-top: 1px solid #000;">
+      <hr style="margin-top:2px; margin-bottom:0px; width:80%; border-top: 3px solid #000;">
+      <div class="modal-footer">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <a id="rocket" href="#top" class=""></a>
+  <script type="text/javascript" src="https://xiaomochen520.github.io/smstudio.github.io/js/totop.js?v=1.0.0" async=""></script>
+  
+    <a id="menu-switch"><i class="fa fa-bars fa-lg"></i></a>
+  
+</body>
+</html>
